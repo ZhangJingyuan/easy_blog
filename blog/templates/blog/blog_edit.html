@@ -1,0 +1,76 @@
+{% extends "./blog_detail.html" %}
+{% block editing_start %}
+<style>
+	.rich_media_content > p,.rich_media_content > section{
+		border:5px solid black;
+
+	}
+	.rich_media_content > p > label,.rich_media_content > section > label {
+		min-height:50px;
+		width: 100%;
+		display: block;
+		position: relative;
+		z-index: 2;
+		text-align:center;
+		padding-top:12px;
+		background-color:#b2b2b2;
+		border-radius: 0.35em;
+		margin-top:15px;
+		margin-bottom:15px;
+				
+	}
+	.rich_media_content > p > label:before,.rich_media_content > section > label:before{
+		content:"remove";
+		color:#ffffff !important
+	
+	}
+	
+	.rich_media_content > p > input:checked ~ label,.rich_media_content > section > input:checked ~ label{
+		background-color:red;
+	}
+	
+	.rich_media_content > p > input:checked ~ label:before,.rich_media_content > section > input:checked ~ label:before{
+		content:"cancel"
+	}
+	
+	.rich_media_content > p > input,.rich_media_content > section > input{
+		visibility:hidden
+	}
+	
+	.fix-right{
+		position: fixed; 
+		bottom: 0px;
+		margin:10px; 
+		z-index:3;
+		right:5px;
+	}
+	
+
+			
+</style>
+<form id="editing_form" action="{% url 'content_handler' blog.id %}" method="post">
+{% csrf_token %}
+{% endblock %}
+{% block origin_link %}
+{% endblock %}
+
+{% block editing_end %}
+<input id="edit_submit" class="button fix-right primary " type="submit" value="Submit">
+</form>
+<script type="text/javascript">
+	var para_list = document.getElementById('js_content').children;
+	for(i=0;i<para_list.length;i++){
+		var new_checkbox = document.createElement('input');
+		var new_label = document.createElement('label');
+		
+		new_checkbox.setAttribute("type","checkbox");
+		new_checkbox.setAttribute("name","para_list");
+		new_checkbox.setAttribute("id","para_"+i);
+		new_checkbox.setAttribute("value",para_list[i].getAttribute("id"));
+		new_label.setAttribute('for',"para_"+i)
+		para_list[i].appendChild(new_checkbox);
+		para_list[i].appendChild(new_label);
+	}
+</script>
+
+{% endblock %}

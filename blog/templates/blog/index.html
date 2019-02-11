@@ -1,0 +1,33 @@
+{% extends './base.html' %}
+
+{% block body %}
+
+
+
+<!-- Main -->
+<div id="main">
+	
+	<section id="four">
+		
+		<section>
+			<form action="{% url 'webpage_handler' %}" method="post">
+			{% csrf_token %}
+				<div class="row gtr-uniform gtr-50">
+					<div class="col-12">
+						<textarea name="wechat_weblink" id="demo-message" placeholder="Enter wechat weblink" rows="6"></textarea>
+					</div>
+					<div class="col-12">
+						<ul class="actions">
+							<li><input type="submit" value="Submit" class="primary" /></li>
+							<li><input type="reset" value="Reset" /></li>
+						</ul>
+					</div>
+				</div>
+			</form>
+		</section>
+
+	</section>
+
+</div>
+
+{% endblock %}

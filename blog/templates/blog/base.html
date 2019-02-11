@@ -1,0 +1,33 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0,viewport-fit=cover">
+
+	<link rel="stylesheet" href="{% static 'blog/css/main.css' %}" />
+    <title>{% block title %}{% endblock %}</title>
+	<script>
+	function resetImgUrl(imgObj,imgSrc){
+		var base_url = imgObj.getAttribute("data-src")
+		imgObj.src=base_url+imgSrc;    
+    }
+	</script>
+ </head>
+ <body class="is-preload">
+<!-- Header -->
+<header id="header">
+	<div class="inner">
+		<a href="#" class="image avatar"><img src="{% static 'blog/images/avatar.jpg' %}" alt="" /></a>
+		<h1><strong>I am Strata</strong>, a super simple<br />
+		responsive site template freebie<br />
+		crafted by <a href="http://html5up.net">HTML5 UP</a>.</h1>
+	</div>
+</header>
+ {% block body%}
+ {% endblock %}
+ </body>
+
+
+</html>

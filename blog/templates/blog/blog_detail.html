@@ -1,0 +1,26 @@
+{% extends "./base.html" %}
+{% block title %}
+{{ blog.title }}
+{% endblock %}
+
+{% block body %}
+<div id="main">
+<section id="one">
+<header class="major">
+<h2>{{ blog.title }}</h2>
+</header>
+
+{% block editing_start %}
+{% endblock %}
+
+
+<p>{{ blog.body | safe }}</p>
+{% block origin_link %}
+<a href="{{ blog.origin_url }}" class="button right">Origin</a>
+{% endblock %}
+
+{% block editing_end %}
+{% endblock %}
+</section>
+</div>
+{% endblock %}

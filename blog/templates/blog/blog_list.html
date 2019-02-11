@@ -1,0 +1,27 @@
+{% extends './base.html' %}
+{% load static %}
+{% block body %}
+{% if blog_list %}
+<div id="main">
+	<!-- Two -->
+	<section id="two">
+		<div class="row">
+			{% for blog in blog_list %}
+			<article class="col-6 col-12-xsmall work-item">
+				<a href="{{ blog.id }}/blog_detail/" class="image fit thumb"><img src="{% static 'blog/images/thumbs/01.jpg' %}" alt="" /></a>
+				<h3>{{ blog.title }}</h3>
+				<p><a href="{{ blog.id }}/blog_edit/" class="button">Edit</a></p>
+			</article>
+			{% endfor %}
+		</div>
+		<ul class="actions">
+			<li><a href="#" class="button">Full Portfolio</a></li>
+		</ul>
+	</section>
+</div>
+
+{% else %}
+    <p>No blogs are available.</p>
+{% endif %}
+
+{% endblock %}
